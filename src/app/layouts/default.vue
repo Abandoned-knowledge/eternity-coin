@@ -3,7 +3,10 @@
 <template>
   <div class="flex h-full items-center">
     <NavigationSidebar />
-    <slot></slot>
+    <main class="flex-grow">
+      <slot></slot>
+    </main>
+    <RecentSidebar />
   </div>
 </template>
 
