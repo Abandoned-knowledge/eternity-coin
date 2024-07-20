@@ -4,6 +4,7 @@ export default {
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
+    "./shared/**/*.vue",
   ],
   theme: {
     colors: {
@@ -18,6 +19,7 @@ export default {
       'expense': 'var(--expense-color)',
       'income': 'var(--income-color)',
       'red': 'var(--red-color)',
+      'red-fade': 'var(--red-fade-color)',
       'link': 'var(--link-color)',
     },
   },

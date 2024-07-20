@@ -1,12 +1,10 @@
-<script setup lang='ts'>
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <header class="text-3xl">header</header>
+  <div class="flex h-full items-center">
+    <NavigationSidebar />
     <slot></slot>
+  </div>
 </template>
 
-<style lang='scss' scoped>
-
-</style>
+<style lang="scss" scoped></style>

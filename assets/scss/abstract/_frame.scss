@@ -1,0 +1,15 @@
+.frame {
+  background-color: var(--frame-color);
+  border-radius: 25px;
+
+  &_dark {
+    background-color: var(--frame-darked-color);
+  }
+
+  &_sidebar {
+    padding-top: 50px;
+    height: 100vh;
+    width: fit-content;
+    border: 10px solid var(--bg-color);
+  }
+}
