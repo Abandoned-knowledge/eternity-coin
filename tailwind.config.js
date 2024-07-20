@@ -6,7 +6,20 @@ export default {
     "./pages/**/*.vue",
   ],
   theme: {
-    extend: {},
+    colors: {
+      'main': 'var(--main-color)',
+      'accent': 'var(--accent-color)',
+      'frame': 'var(--frame-color)',
+      'frame-darked': 'var(--frame-darked-color)',
+      'bg': 'var(--bg-color)',
+      'white': 'var(--white-color)',
+      'dark': 'var(--dark-color)',
+      'grey': 'var(--grey-color)',
+      'expense': 'var(--expense-color)',
+      'income': 'var(--income-color)',
+      'red': 'var(--red-color)',
+      'link': 'var(--link-color)',
+    },
   },
   plugins: ["prettier-plugin-tailwindcss"],
 }
