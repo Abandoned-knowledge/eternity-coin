@@ -3,7 +3,7 @@
 <template>
   <div class="flex h-full items-center">
     <NavigationSidebar />
-    <main class="flex-grow h-screen overflow-y-scroll pt-[10px]">
+    <main class="flex-grow h-screen overflow-y-scroll pt-[10px] px-20">
       <slot></slot>
     </main>
     <RecentSidebar />

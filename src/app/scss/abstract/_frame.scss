@@ -6,6 +6,10 @@
     background-color: var(--frame-darked-color);
   }
 
+  &_accent {
+    background-color: var(--accent-color);
+  }
+
   &_chart {
     padding: 20px;
   }
