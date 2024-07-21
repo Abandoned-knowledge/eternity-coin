@@ -1,3 +1,12 @@
+<script setup lang="ts">
+// import DonutFirst from '~/components/Charts/Expense/DonutFirst.vue';
+</script>
+
 <template>
-  <h1 class="body-text">hello world</h1>
+  <div class="flex gap-5">
+    <ChartsExpenseDonutFirst class="w-[30%]" />
+    <ChartsIncomeDonutFirst class="w-[30%]" />
+  </div>
 </template>
+
+<style lang="scss" scoped></style>
