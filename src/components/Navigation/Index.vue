@@ -4,10 +4,10 @@ import Menu from "./Menu.vue";
 </script>
 
 <template>
-  <aside class="frame frame_sidebar flex flex-col">
+  <aside class="frame frame_sidebar flex min-w-fit flex-col">
     <MainLogo class="mx-4" />
     <Menu />
-    <Account class="mt-auto"/>
+    <Account class="mt-auto" />
   </aside>
 </template>
 

@@ -2,11 +2,11 @@
 
 <template>
   <div class="flex h-full items-center">
-    <NavigationSidebar />
-    <main class="flex-grow h-screen overflow-y-scroll pt-[10px] px-20">
+    <Navigation />
+    <main class="h-screen flex-grow overflow-y-scroll px-20 pt-[10px]">
       <slot></slot>
     </main>
-    <RecentSidebar />
+    <Recent />
   </div>
 </template>
 
