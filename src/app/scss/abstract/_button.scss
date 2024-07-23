@@ -1,0 +1,15 @@
+.button {
+  border-radius: 10px;
+  padding: 7.5px 40px;
+  cursor: pointer;
+  text-align: center;
+  &_accent {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+  }
+
+  &_main {
+    background-color: var(--main-color);
+    color: var(--white-color);
+  }
+}
