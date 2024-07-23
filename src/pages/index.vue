@@ -1,6 +1,4 @@
-<script setup lang="ts">
-// import DonutFirst from '~/components/Charts/Expense/DonutFirst.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="flex gap-5">
@@ -12,6 +10,8 @@
       <CurrentValue class="flex-grow" />
     </div>
   </div>
+
+  <ChartsSummaryLineFirst />
 </template>
 
 <style lang="scss" scoped></style>
