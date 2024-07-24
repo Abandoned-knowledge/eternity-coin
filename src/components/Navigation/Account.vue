@@ -7,9 +7,9 @@
       <p class="body-text body-text_sm text-grey">googleMail@gmail.com</p>
     </div>
 
-    <NuxtLink to="/exit">
+    <!-- <NuxtLink to="/exit">
       <ExitIcon class="rounded text-red transition-all hover:bg-red-fade" />
-    </NuxtLink>
+    </NuxtLink> -->
   </nuxtLink>
 </template>
 
