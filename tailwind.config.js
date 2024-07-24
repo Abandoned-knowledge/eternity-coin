@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/components/**/*.{js,vue,ts}",
-    "./src/app/layouts/**/*.{js,vue,ts}",
-    "./src/pages/**/*.{js,vue,ts}",
-    "./src/shared/**/*.{js,vue,ts}",
+    "./components/**/*.{js,vue,ts}",
+    "./app/layouts/**/*.{js,vue,ts}",
+    "./pages/**/*.{js,vue,ts}",
+    "./shared/**/*.{js,vue,ts}",
   ],
   theme: {
     colors: {
