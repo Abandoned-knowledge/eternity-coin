@@ -11,11 +11,11 @@ import { doughnutChartOptions } from "@/components/Charts/options";
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const chartData = reactive({
-  labels: ["Main Job", "Freelance"],
+  labels: [1, 2, 3, 4, 5],
   datasets: [
     {
-      backgroundColor: ["#91C499", "#EAD637"],
-      data: [45333, 77666],
+      backgroundColor: ["#91C499", "#EAD637", "#804849", "#4dda72", "#dec971", "#edab1c", "#245ced", "#dc9792"],
+      data: [123, 3466, 12312, 45747, 2323],
       hoverOffset: 15,
     },
   ],
