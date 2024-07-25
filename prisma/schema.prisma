@@ -8,10 +8,21 @@ datasource db {
 }
 
 model transactions {
-  transactions_id     Int       @id @default(autoincrement())
+  transactions_id     Int         @id @default(autoincrement())
   user_id             Int?
   category_id         Int?
   value               Int?
   transaction_type_id Int?
-  date                DateTime? @db.DateTime(0)
+  date                DateTime?   @db.DateTime(0)
+  categories          categories? @relation(fields: [category_id], references: [category_id], onDelete: Cascade, map: "fk_category")
+
+  @@index([category_id], map: "fk_category")
+}
+
+model categories {
+  category_id  Int            @id @default(autoincrement())
+  user_id      Int?
+  label        String?        @db.VarChar(45)
+  color        String?        @db.VarChar(7)
+  transactions transactions[]
 }
