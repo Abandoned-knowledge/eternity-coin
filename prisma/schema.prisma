@@ -7,11 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model testmodel {
-  id                  Int      @id @default(autoincrement())
-  user_id             Int
-  category_id         Int
-  value               Int
-  transaction_type_id Int
-  date                DateTime
+model transactions {
+  transactions_id     Int       @id @default(autoincrement())
+  user_id             Int?
+  category_id         Int?
+  value               Int?
+  transaction_type_id Int?
+  date                DateTime? @db.DateTime(0)
 }
