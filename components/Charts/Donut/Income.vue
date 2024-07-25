@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import Canvas from './Canvas.vue';
-import { type dateType } from "~/app/interfaces/types";
+import Canvas from "./Canvas.vue";
+import type { dateType, transactionType } from "~/app/interfaces/types";
 import { type IDonutItem } from "~/app/interfaces/interfaces";
 
+const { value: type } = ref<transactionType>();
 const { value: date } = ref<dateType>("year");
-const { data } = await useFetch(`/api/transactions/income/date/${date}`);
-const {value: rawData} = ref<IDonutItem[]>(data.value as IDonutItem[]);
+
+const { data } = await useFetch(`/api/transactions/${type}/date/${date}`);
+const { value: rawData } = ref<IDonutItem[]>(data.value as IDonutItem[]);
 </script>
 
 <template>
