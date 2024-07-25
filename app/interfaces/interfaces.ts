@@ -11,6 +11,7 @@ export interface ICategoryItem {
 }
 
 export interface IDonutItem {
-  category_id: number,
+  label: string,
   total_value: string,
+  color: string
 }

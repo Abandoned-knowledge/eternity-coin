@@ -14,14 +14,9 @@ import { doughnutChartOptions } from "@/components/Charts/options";
 import { type IDonutItem } from "~/app/interfaces/interfaces";
 const { data } = defineProps<{ data: IDonutItem[] }>();
 
-const categories: number[] = data.map((el) => el.category_id);
 const values: number[] = data.map((el) => Number(el.total_value));
-
-let bgColors: string[] = [];
-
-for (let i = 0; i < categories.length; i++) {
-  bgColors.push(generateRandomColor());
-}
+const categories: string[] = data.map((el) => el.label);
+const bgColors: string[] = data.map((el) => el.color);
 
 const chartData = reactive({
   labels: categories,
