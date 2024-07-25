@@ -7,12 +7,11 @@ export default defineNuxtConfig({
   modules: ["@prisma/nuxt"],
 
   prisma: {
-    generateClient: false,
     runMigration: false,
-    formatSchema: false
+    installStudio: false
   },
 
-  ssr: true,
+  ssr: false,
 
   dir: {
     layouts: "./app/layouts/",
