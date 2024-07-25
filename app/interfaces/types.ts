@@ -1,0 +1,1 @@
+export type dateType = "day" | "week" | "month" | "year";
