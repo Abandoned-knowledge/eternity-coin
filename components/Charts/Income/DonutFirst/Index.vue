@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import Chart from "./Chart.vue";
+
+import { type IDonutItem } from "~/app/interfaces/interfaces";
+const props = defineProps<{ data: IDonutItem[] }>();
 </script>
 
 <template>
@@ -18,6 +21,6 @@ import Chart from "./Chart.vue";
       </select>
     </div>
 
-    <Chart />
+    <Chart :data="props.data"/>
   </article>
 </template>
