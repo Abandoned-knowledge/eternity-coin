@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { type dateType } from "~/app/interfaces/types";
-import formatDate from "~/features/date/formatDate";
+import user from "~/entities/user/index";
 
 const prisma = new PrismaClient();
 
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
   FROM transactions as t 
   INNER JOIN categories as c 
   ON t.category_id = c.category_id
-  WHERE t.user_id = 3 AND t.transaction_type_id = 1 and ${startDate} <= date and date <= ${endDate}
+  WHERE t.user_id = ${user.user_id} AND t.transaction_type_id = 1 and ${startDate} <= date and date <= ${endDate}
   GROUP BY t.category_id
   ORDER BY c.label
   `;
