@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Chart from "./Chart.vue";
+import Canvas from './Canvas.vue';
 import { type dateType } from "~/app/interfaces/types";
 import { type IDonutItem } from "~/app/interfaces/interfaces";
 
@@ -24,6 +24,6 @@ const {value: rawData} = ref<IDonutItem[]>(data.value as IDonutItem[]);
       </select>
     </div>
 
-    <Chart :data="rawData" />
+    <Canvas :data="rawData" />
   </article>
 </template>

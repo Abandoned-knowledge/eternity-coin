@@ -2,8 +2,8 @@
 
 <template>
   <div class="flex gap-5">
-    <ChartsExpenseDonutFirst class="w-[30%]" />
-    <ChartsIncomeDonutFirst class="w-[30%]" />
+    <ChartsDonutExpense class="w-[30%]" />
+    <ChartsDonutIncome class="w-[30%]" />
 
     <div class="flex flex-grow flex-col gap-5">
       <AddTransaction />
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <ChartsSummaryLineFirst />
+  <ChartsLineSummary />
 </template>
 
 <style lang="scss" scoped></style>

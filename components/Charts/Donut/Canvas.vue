@@ -6,16 +6,22 @@
 import { Doughnut } from "vue-chartjs";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Chart as ChartJS, Tooltip, Legend, ArcElement, layouts } from "chart.js";
-import { doughnutChartOptions } from "~/components/Charts/options";
-
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
+import { type IDonutItem } from "~/app/interfaces/interfaces";
+import { doughnutChartOptions } from "~/features/charts/options";
+const { data } = defineProps<{ data: IDonutItem[] }>();
+
+const values: number[] = data.map((el) => Number(el.total_value));
+const categories: string[] = data.map((el) => el.label);
+const bgColors: string[] = data.map((el) => el.color);
+
 const chartData = reactive({
-  labels: ["Groceries", "Auto", "Metro"],
+  labels: categories,
   datasets: [
     {
-      backgroundColor: ["#789f79", "#a97db3", "#c24d29"],
-      data: [23, 122, 32],
+      backgroundColor: bgColors,
+      data: values,
       hoverOffset: 15,
     },
   ],

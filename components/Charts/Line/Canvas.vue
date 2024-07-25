@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LineChartOptions } from "~/components/Charts/options";
+import { LineChartOptions } from "~/features/charts/options";
 import { Line } from "vue-chartjs";
 import {
   Chart as ChartJS,

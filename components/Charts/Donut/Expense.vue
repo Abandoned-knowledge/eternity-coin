@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-import Chart from "./Chart.vue";
+import Canvas from './Canvas.vue';
+import { type dateType } from "~/app/interfaces/types";
+import { type IDonutItem } from "~/app/interfaces/interfaces";
+
+const { value: date } = ref<dateType>("year");
+const { data } = await useFetch(`/api/transactions/expense/date/${date}`);
+const {value: rawData} = ref<IDonutItem[]>(data.value as IDonutItem[]);
 </script>
 
 <template>
@@ -18,6 +24,6 @@ import Chart from "./Chart.vue";
       </select>
     </div>
 
-    <Chart />
+    <Canvas :data="rawData"/>
   </article>
 </template>
