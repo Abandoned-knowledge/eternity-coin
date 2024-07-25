@@ -2,8 +2,8 @@
 
 <template>
   <div class="flex gap-5">
-    <ChartsDonutExpense class="w-[30%]" />
-    <ChartsDonutIncome class="w-[30%]" />
+    <ChartsDonut :type="'expense'" class="w-[30%]" />
+    <ChartsDonut :type="'income'" class="w-[30%]" />
 
     <div class="flex flex-grow flex-col gap-5">
       <AddTransaction />

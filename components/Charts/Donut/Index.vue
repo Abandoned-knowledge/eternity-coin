@@ -3,7 +3,9 @@ import Canvas from "./Canvas.vue";
 import type { dateType, transactionType } from "~/app/interfaces/types";
 import { type IDonutItem } from "~/app/interfaces/interfaces";
 
-const { value: type } = ref<transactionType>();
+const props = defineProps<{ type: transactionType }>();
+
+const { value: type } = ref<transactionType>(props.type);
 const { value: date } = ref<dateType>("year");
 
 const { data } = await useFetch(`/api/transactions/${type}/date/${date}`);
@@ -13,17 +15,9 @@ const { value: rawData } = ref<IDonutItem[]>(data.value as IDonutItem[]);
 <template>
   <article class="frame frame_chart flex flex-col items-center">
     <div class="flex w-full items-center justify-between">
-      <p class="title-text">Income</p>
+      <p class="title-text capitalize">{{ props.type }}</p>
 
-      <select
-        @change="console.log(($event.target! as HTMLSelectElement).value)"
-        class="flex cursor-pointer rounded border border-frame-darked bg-frame px-2 py-1"
-      >
-        <option value="day">За День</option>
-        <option value="week">За Неделю</option>
-        <option value="month" selected>За Месяц</option>
-        <option value="year">За Год</option>
-      </select>
+      <ChartSelect />
     </div>
 
     <Canvas :data="rawData" />
