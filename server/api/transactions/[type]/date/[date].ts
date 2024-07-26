@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import type { IDonutItem } from "~/app/interfaces/interfaces";
 import type { dateType, transactionType } from "~/app/interfaces/types";
 import user from "~/entities/user/index";
 
@@ -37,7 +38,7 @@ export default defineEventHandler(async (event) => {
     currType = 2;
   }
 
-  return await prisma.$queryRaw`
+  const query: [] = await prisma.$queryRaw`
   SELECT c.label, c.color, sum(value) as total_value
   FROM transactions as t 
   INNER JOIN categories as c 
@@ -46,4 +47,16 @@ export default defineEventHandler(async (event) => {
   GROUP BY t.category_id
   ORDER BY c.label
   `;
+
+  if (query.length == 0) {
+    const item: IDonutItem = {
+      label: "nothing",
+      total_value: "1",
+      color: "#080808",
+    };
+
+    return [item];
+  }
+
+  return query;
 });
