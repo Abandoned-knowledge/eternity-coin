@@ -1,10 +1,12 @@
-// const style = getComputedStyle(document.body);
-// const greyColor = style.getPropertyValue("--grey-color");
-// const darkColor = style.getPropertyValue("--dark-color");
+const style = getComputedStyle(document.body);
+const whiteColor = style.getPropertyValue("--white-color");
+const darkColor = style.getPropertyValue("--dark-color");
+const expenseColor = style.getPropertyValue("--expense-color");
+const incomeColor = style.getPropertyValue("--expense-color");
 
-const whiteColor = "#ffffff";
-const darkColor = "#000000";
+
 const baseFamily = "MPLUS";
+
 
 const legendFont = {
   size: 14,
@@ -12,7 +14,7 @@ const legendFont = {
 };
 
 const datalabelsFont = {
-  size: 18,
+  size: 14,
   family: baseFamily,
 };
 
