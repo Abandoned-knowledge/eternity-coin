@@ -16,6 +16,11 @@ export interface IDonutItem {
   color: string;
 }
 
+export interface ILineItem {
+  month_name: string;
+  total_value: string;
+}
+
 export interface IUser {
   user_id: number;
   email: string;

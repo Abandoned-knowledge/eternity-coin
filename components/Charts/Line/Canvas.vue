@@ -13,21 +13,11 @@ import {
 } from "chart.js";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const data = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "Data One",
-      backgroundColor: "#f87979",
-      borderColor: "#f87979",
-      data: [40, 39, 10, 40, 39, 80, 40],
-    },
-  ],
-};
+const props = defineProps();
 </script>
 
 <template>
-  <Line :options="LineChartOptions" :data="data" />
+  <Line :options="LineChartOptions" :data="props.data" />
 </template>
 
 <style lang="scss" scoped></style>
