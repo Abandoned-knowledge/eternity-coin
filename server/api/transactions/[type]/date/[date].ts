@@ -14,6 +14,12 @@ export default defineEventHandler(async (event) => {
   currDate.setHours(0, 0, 0, 0);
   let startDate;
 
+  if (transactionType == "income") {
+    currType = 1;
+  } else if (transactionType == "expense") {
+    currType = 2;
+  }
+
   if (date == "day") {
     startDate = currDate;
   } else if (date == "week") {
@@ -29,14 +35,20 @@ export default defineEventHandler(async (event) => {
     startDate.setFullYear(currDate.getFullYear());
     startDate.setMonth(0);
     startDate.setDate(1);
-  } else startDate = currDate;
-  startDate.setHours(0, 0, 0, 0);
+  } else if (date == "monthly") {
+    const query: [] = await prisma.$queryRaw`
+      SELECT DATE_FORMAT(DATE(t.date), '%M') as monthName, sum(value) as total_value
+      FROM transactions as t 
+      INNER JOIN categories as c 
+      ON t.category_id = c.category_id
+      WHERE t.user_id = ${user.user_id} AND t.transaction_type_id = ${currType} AND year(t.date) = ${currDate.getFullYear()}
+      GROUP BY monthName
+    `;
 
-  if (transactionType == "income") {
-    currType = 1;
-  } else if (transactionType == "expense") {
-    currType = 2;
-  }
+    return query.sort();
+  } else startDate = currDate;
+
+  startDate.setHours(0, 0, 0, 0);
 
   const query: [] = await prisma.$queryRaw`
   SELECT c.label, c.color, sum(value) as total_value
