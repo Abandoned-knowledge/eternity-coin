@@ -14,8 +14,6 @@ let rawData = ref<IDonutItem[]>(data.value as IDonutItem[]);
 watch(date, async () => {
   const data = await $fetch(`/api/transactions/${type.value}/date/${date.value}`);
   rawData.value = data as IDonutItem[];  
-
-  console.log(data);
 })
 </script>
 
