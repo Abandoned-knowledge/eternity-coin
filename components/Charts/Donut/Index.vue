@@ -5,11 +5,18 @@ import { type IDonutItem } from "~/app/interfaces/interfaces";
 
 const props = defineProps<{ type: transactionType }>();
 
-const { value: type } = ref<transactionType>(props.type);
-const { value: date } = ref<dateType>("year");
+const type = ref<transactionType>(props.type);
+const date = ref<dateType>("month");
 
-const { data } = await useFetch(`/api/transactions/${type}/date/${date}`);
-const { value: rawData } = ref<IDonutItem[]>(data.value as IDonutItem[]);
+const { data } = await useFetch(`/api/transactions/${type.value}/date/${date.value}`);
+let rawData = ref<IDonutItem[]>(data.value as IDonutItem[]);
+
+watch(date, async () => {
+  const data = await $fetch(`/api/transactions/${type.value}/date/${date.value}`);
+  rawData.value = data as IDonutItem[];  
+
+  console.log(data);
+})
 </script>
 
 <template>
@@ -17,7 +24,7 @@ const { value: rawData } = ref<IDonutItem[]>(data.value as IDonutItem[]);
     <div class="flex w-full items-center justify-between">
       <p class="title-text capitalize">{{ props.type }}</p>
 
-      <ChartSelect />
+      <ChartSelect @test-name="(e) => (date = e)" />
     </div>
 
     <Canvas :data="rawData" />

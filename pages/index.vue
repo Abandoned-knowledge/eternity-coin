@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="flex gap-5">
     <ChartsDonut :type="'expense'" class="w-[30%]" />
@@ -13,5 +11,3 @@
 
   <ChartsLineSummary />
 </template>
-
-<style lang="scss" scoped></style>
