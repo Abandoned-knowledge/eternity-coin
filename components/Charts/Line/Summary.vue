@@ -14,6 +14,7 @@ const chartData = {
       backgroundColor: "#28a61c",
       borderColor: "#28a61c",
       data: incomeData.value?.map(el => el.total_value),
+      tension: 0.3
     },
     
     {
@@ -21,6 +22,7 @@ const chartData = {
       backgroundColor: "#e35151",
       borderColor: "#e35151",
       data: expenseData.value?.map(el => el.total_value),
+      tension: 0.3
     },
   ],
 };
