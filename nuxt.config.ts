@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   prisma: {
     runMigration: false,
     installStudio: false,
+    generateClient: false
   },
 
   ssr: false,
