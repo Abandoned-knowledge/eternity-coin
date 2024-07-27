@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prisma:seed": "npx tsx prisma/seed.ts",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -27,6 +28,7 @@
     "prisma": "^5.17.0",
     "sass": "^1.77.8",
     "tailwindcss": "^3.4.6",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "vue-chartjs": "^5.3.1"
   }

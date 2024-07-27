@@ -27,9 +27,10 @@ model transactions {
 }
 
 model categories {
-  category_id  Int            @id @default(autoincrement())
-  user_id      Int?
-  label        String?        @db.VarChar(45)
-  color        String?        @db.VarChar(7)
-  transactions transactions[]
+  category_id         Int            @id @default(autoincrement())
+  user_id             Int?
+  transaction_type_id Int?
+  label               String?        @db.VarChar(45)
+  color               String?        @db.VarChar(7)
+  transactions        transactions[]
 }
