@@ -1,4 +1,4 @@
-:where(.menu-text, .title-text, .body-text) {
+:where(.menu-text, .title-text, .body-text, label, span, option, select) {
   color: var(--dark-color);
   line-height: 110%;
 }

@@ -4,7 +4,7 @@
     <ChartsDonut :type="'income'" class="w-[30%]" />
 
     <div class="flex flex-grow flex-col gap-5">
-      <AddTransaction />
+      <ModalAddTransaction />
       <CurrentValue class="flex-grow" />
     </div>
   </div>
