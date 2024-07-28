@@ -11,7 +11,6 @@ export default defineEventHandler(async (event) => {
 
   let currType = 1;
   let currDate = new Date();
-  currDate.setHours(0, 0, 0, 0);
   let startDate;
 
   if (transactionType == "income") {
@@ -21,7 +20,7 @@ export default defineEventHandler(async (event) => {
   }
 
   if (date == "day") {
-    startDate = currDate;
+    startDate = new Date();
   } else if (date == "week") {
     const days = 7;
     const timestamp = new Date().setDate(currDate.getDate() - days);
@@ -44,10 +43,8 @@ export default defineEventHandler(async (event) => {
       WHERE t.user_id = ${user.user_id} AND t.transaction_type_id = ${currType} AND year(t.date) = ${currDate.getFullYear()}
       GROUP BY month_name
     `;
-
-    return query.sort();
+    return query;
   } else startDate = currDate;
-
   startDate.setHours(0, 0, 0, 0);
 
   const query: [] = await prisma.$queryRaw`
