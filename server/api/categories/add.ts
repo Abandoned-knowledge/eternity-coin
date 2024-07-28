@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     data: {
       user_id: user.user_id,
       label: categoryName,
-      transaction_type_id: type,
+      type_id: type,
       color: color,
     },
   });
