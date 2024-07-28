@@ -9,6 +9,7 @@ export interface ICategoryItem {
   category_id: number;
   label: string;
   color: string;
+  transaction_type_id?: number;
 }
 
 export interface IDonutItem {
