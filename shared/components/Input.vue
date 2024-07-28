@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const props = defineProps<{ placeholder: string; outlineColor: string }>();
+const props = defineProps<{
+  placeholder: string;
+  outlineColor: string;
+  required?: boolean
+}>();
 
 function convertPlaceholder(ph: string): string {
   const words = ph.split(" ");
   const wordsLowerCase = words.map((word) => word.toLowerCase());
-  return `input-${wordsLowerCase.join("-")}`;
+  return `input_${wordsLowerCase.join("_")}`;
 }
 </script>
 
@@ -15,6 +19,8 @@ function convertPlaceholder(ph: string): string {
     </label>
     <input
       type="text"
+      :required="props.required"
+      :name="convertPlaceholder(props.placeholder)"
       :id="convertPlaceholder(props.placeholder)"
       class="body-text rounded border border-main p-1 outline-none outline-2 outline-offset-0"
       :class="`focus:outline-${props.outlineColor}`"
