@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Table from "./Table.vue";
-
 import type { ITransactionItem } from "~/app/interfaces/interfaces";
 const tabs = ["All", "Income", "Expense"];
 
@@ -30,9 +28,9 @@ onMounted(() => selectTab(document.querySelector(".tabs__item") as HTMLDivElemen
     </button>
   </div>
 
-  <Table v-if="currentTab == 'Income'" :data="incomeData!" />
-  <Table v-else-if="currentTab == 'Expense'" :data="expenseData!" />
-  <Table v-else :data="allData!" />
+  <TableTransactions v-if="currentTab == 'Income'" :data="incomeData!" />
+  <TableTransactions v-else-if="currentTab == 'Expense'" :data="expenseData!" />
+  <TableTransactions v-else :data="allData!" />
 </template>
 
 <style lang="scss" scoped>

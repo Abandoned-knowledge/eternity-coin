@@ -1,39 +1,61 @@
 <script setup lang="ts">
-const { data: tabs } = await useFetch("/api/income/tabs");
+import Charts from "./Charts.vue";
+import Categories from "./Categories.vue";
+import Transactions from "./Transactions.vue";
 
-const currentComponentTitle = ref<string>();
+const tabs = [
+  {
+    title: "Charts",
+    component: Charts,
+  },
+  {
+    title: "Categories",
+    component: Categories,
+  },
+  {
+    title: "Transactions",
+    component: Transactions,
+  },
+];
 
-function switchTab(componentTitle: string, event: Event | HTMLButtonElement) {
-  const allTabs = document.querySelectorAll(".tab");
-  let currentTab: HTMLButtonElement;
+const currentTab = shallowRef();
 
-  event instanceof Event ? (currentTab = event.target as HTMLButtonElement) : (currentTab = event);
-  allTabs.forEach((tab) => tab.classList.remove("active"));
-  currentTab.classList.add("active");
-  currentComponentTitle.value = componentTitle;
+function selectTab(event: Event | HTMLDivElement, tab: Component) {
+  const target: HTMLDivElement = event instanceof Event ? (event.target as HTMLDivElement) : event;
+
+  const allTabs: HTMLDivElement[] = Array.from(document.querySelectorAll(".tabs__item"));
+  allTabs.forEach((tab) => tab.classList.remove("selected"));
+  target.classList.add("selected");
+
+  currentTab.value = tab;
 }
 
 onMounted(() => {
-  const firstTab = document.querySelector(".tab");
-  switchTab(tabs.value![0].tabTitle, firstTab as HTMLButtonElement);
+  const firstTab = document.querySelector(".tabs__item") as HTMLDivElement;
+  const firstComponent = tabs[0].component;
+  selectTab(firstTab, firstComponent);
 });
 </script>
 
 <template>
-  <div class="flex w-fit gap-2 rounded bg-frame">
-    <button @click="switchTab(tab.tabComponent, $event)" v-for="tab in tabs" class="title-text tab">
-      {{ tab.tabTitle }}
+  <div class="tabs">
+    <button v-for="tab in tabs" @click="selectTab($event, tab.component)" class="tabs__item title-text">
+      {{ tab.title }}
     </button>
   </div>
-  <component :is="`TabsIncomeContent${currentComponentTitle}`" class="mt-10"/>
+  <component :is="currentTab" />
 </template>
 
 <style lang="scss" scoped>
-.tab {
-  @apply rounded bg-frame px-5 py-3 text-grey;
+.tabs {
+  @apply flex w-fit gap-3 overflow-hidden rounded-xl bg-frame;
 
-  &.active {
-    @apply bg-income text-white;
+  &__item {
+    @apply rounded-xl px-5 py-3;
+
+    &.selected {
+      @apply bg-income text-white;
+    }
   }
 }
 </style>
