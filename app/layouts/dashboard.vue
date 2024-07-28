@@ -6,6 +6,7 @@
     <main class="h-screen flex-grow overflow-y-scroll px-20 pt-[10px]">
       <slot></slot>
     </main>
+    <Recent />
   </div>
 </template>
 
