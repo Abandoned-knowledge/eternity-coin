@@ -1,15 +1,22 @@
 <script setup lang="ts">
-const { isIncome } = defineProps<{ isIncome: boolean }>();
+import type { ITransactionItem } from "~/app/interfaces/interfaces";
+import formatDate from "~/features/date/formatDate";
+
+interface inter extends ITransactionItem {
+  isIncome: boolean;
+}
+
+const props = defineProps<inter>();
 </script>
 
 <template>
   <li>
     <div class="transaction" :class="{ transaction_income: isIncome }">
-      <div>
-        <p class="transaction__category body-text body-text_lg bold">Groceries</p>
-        <p class="transaction__date body-text body-text_sm text-grey">24 jul, wd</p>
+      <div class="flex flex-col gap-2">
+        <p class="transaction__category body-text body-text_lg bold">{{ props.label }}</p>
+        <p class="transaction__date body-text body-text_sm text-grey">{{ formatDate(props.date) }}</p>
       </div>
-      <p class="transaction__value body-text body-text_lg bold">4500 ₽</p>
+      <p class="transaction__value body-text body-text_lg bold">{{ props.value }} ₽</p>
     </div>
   </li>
 </template>

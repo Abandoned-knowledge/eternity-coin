@@ -28,3 +28,10 @@ export interface IUser {
   password: string;
   name: string;
 }
+
+export interface ITransactionItem {
+  label: string;
+  value: number;
+  date: Date;
+  transaction_type_id?: number;
+}
