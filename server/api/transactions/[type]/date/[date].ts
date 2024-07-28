@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     startDate.setMonth(0);
     startDate.setDate(1);
   } else if (date == "monthly") {
-    const query: [] = await prisma.$queryRaw`
+    return await prisma.$queryRaw`
       SELECT DATE_FORMAT(DATE(t.date), '%M') as month_name, sum(value) as total_value
       FROM transactions as t 
       INNER JOIN categories as c 
@@ -43,7 +43,15 @@ export default defineEventHandler(async (event) => {
       WHERE t.user_id = ${user.user_id} AND t.transaction_type_id = ${currType} AND year(t.date) = ${currDate.getFullYear()}
       GROUP BY month_name
     `;
-    return query;
+  } else if (date == "all") {
+    return await prisma.$queryRaw`
+        SELECT c.label, t.value, t.date, t.transaction_type_id, c.color, c.category_id
+        FROM transactions as t
+        INNER JOIN categories as c
+        ON t.category_id = c.category_id
+        WHERE t.user_id = ${user.user_id} AND t.transaction_type_id = ${currType}
+        ORDER BY t.transactions_id desc
+    `;
   } else startDate = currDate;
   startDate.setHours(0, 0, 0, 0);
 
