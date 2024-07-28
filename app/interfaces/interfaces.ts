@@ -34,4 +34,6 @@ export interface ITransactionItem {
   value: number;
   date: Date;
   transaction_type_id?: number;
+  color?: string;
+  category_id?: number;
 }

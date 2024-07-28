@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   return await prisma.$queryRaw`
-        SELECT c.label, t.value, t.date, t.transaction_type_id
+        SELECT c.label, t.value, t.date, t.transaction_type_id, c.color, c.category_id
         FROM transactions as t
         INNER JOIN categories as c
         ON t.category_id = c.category_id
