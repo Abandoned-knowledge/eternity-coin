@@ -15,7 +15,7 @@ async function seedUsers() {
 async function seedCategories() {
   await prisma.categories.create({
     data: {
-      transaction_type_id: faker.number.int({ min: 1, max: 2 }),
+      type_id: faker.number.int({ min: 1, max: 2 }),
       user_id: faker.number.int({ min: 1, max: 20 }),
       label: faker.person.firstName(),
       color: faker.color.rgb(),
@@ -28,7 +28,6 @@ async function seedTransactions() {
       user_id: faker.number.int({ min: 1, max: 20 }),
       category_id: faker.number.int({ min: 1, max: 500 }),
       value: faker.number.int({ min: 1000, max: 100000 }),
-      transaction_type_id: faker.number.int({ min: 1, max: 2 }),
       date: faker.date.between({ from: "2020-01-01", to: "2025-01-01" }),
     },
   });

@@ -15,22 +15,21 @@ model users {
 }
 
 model transactions {
-  transactions_id     Int         @id @default(autoincrement())
-  user_id             Int?
-  category_id         Int?
-  value               Int?
-  transaction_type_id Int?
-  date                DateTime?   @db.DateTime(0)
-  categories          categories? @relation(fields: [category_id], references: [category_id], onDelete: Cascade, map: "fk_category")
+  transactions_id Int        @id @default(autoincrement())
+  user_id         Int
+  category_id     Int
+  value           Int
+  date            DateTime   @db.DateTime(0)
+  categories      categories @relation(fields: [category_id], references: [category_id], onDelete: Cascade, map: "fk_category")
 
   @@index([category_id], map: "fk_category")
 }
 
 model categories {
-  category_id         Int            @id @default(autoincrement())
-  user_id             Int?
-  transaction_type_id Int?
-  label               String?        @db.VarChar(45)
-  color               String?        @db.VarChar(7)
-  transactions        transactions[]
+  category_id  Int            @id @default(autoincrement())
+  user_id      Int
+  type_id      Int
+  label        String         @db.VarChar(45)
+  color        String         @db.VarChar(7)
+  transactions transactions[]
 }
