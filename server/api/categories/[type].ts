@@ -1,4 +1,5 @@
 import { transactionType } from "~/app/interfaces/types";
+import user from "~/entities/user";
 
 export default defineEventHandler(async (event) => {
   let transactionType = 1;
@@ -7,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   return await prisma.categories.findMany({
     where: {
-      user_id: Number(event.context.params!.userId),
+      user_id: user.user_id,
       transaction_type_id: transactionType,
     },
     select: {
