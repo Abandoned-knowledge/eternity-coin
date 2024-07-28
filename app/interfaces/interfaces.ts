@@ -6,7 +6,8 @@ export interface ITab {
 }
 
 export interface ICategoryItem {
-  title: string;
+  category_id: number;
+  label: string;
   color: string;
 }
 

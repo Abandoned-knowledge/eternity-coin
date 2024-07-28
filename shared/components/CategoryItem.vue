@@ -5,7 +5,7 @@ const props = defineProps<ICategoryItem>();
 
 <template>
   <div class="body-text w-fit rounded-[10px] px-3 py-1 text-white" :style="{ backgroundColor: props.color }">
-    {{ props.title }}
+    {{ props.label }}
   </div>
 </template>
 
