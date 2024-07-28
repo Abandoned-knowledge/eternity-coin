@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import user from "~/entities/user/index";
 import Form from "./Form.vue";
 const modal = ref<HTMLDialogElement | null>(null);
 import type { ICategoryItem } from "~/app/interfaces/interfaces";
 
-const { data: incomeCategories } = await useFetch<ICategoryItem[]>(`/api/categories/income/users/${user.user_id}`);
-const { data: expenseCategories } = await useFetch<ICategoryItem[]>(`/api/categories/expense/users/${user.user_id}`);
+const { data: incomeCategories } = await useFetch<ICategoryItem[]>(`/api/categories/income`);
+const { data: expenseCategories } = await useFetch<ICategoryItem[]>(`/api/categories/expense`);
 
 const selTab = ref();
 
 function selectTab(event: Event | HTMLDivElement) {
   let target: HTMLDivElement;
-  
+
   target = event instanceof Event ? (event.target as HTMLDivElement) : event;
 
   const allTabs: HTMLDivElement[] = Array.from(document.querySelectorAll(".tabs__item"));
