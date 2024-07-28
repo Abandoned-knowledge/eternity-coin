@@ -1,12 +1,26 @@
 function formatDate(date: Date): string {
-  let dd: string | number = date.getDate();
-  let mm: string | number = date.getMonth() + 1;
-  const yy = date.getFullYear();
+  const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const months: string[] = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-  if (dd < 10) dd = `0${dd}`;
-  if (mm < 10) mm = `0${mm}`;
+  const weekDay = days[date.getDay()];
+  const year = date.getFullYear();
+  const day = date.getDate();
+  const month = months[date.getMonth()];
 
-  return `${yy}-${mm}-${dd}`;
+  return `${weekDay}, ${day} ${month} ${year}`;
 }
 
 export default formatDate;
