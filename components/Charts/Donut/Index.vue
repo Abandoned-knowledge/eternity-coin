@@ -12,7 +12,7 @@ const { value: date } = ref<SelectDateType>({
 });
 
 const data = await $fetch<IDonutItem[]>(
-  `/api/transactions/${type.value}/date_period/${date.start_date}/${date.end_date}/donut`,
+  `/api/transactions/${type.value}/date_period/${date.start_date}/${date.end_date}/donut`
 );
 let rawData = ref<IDonutItem[]>(data);
 
