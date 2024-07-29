@@ -16,10 +16,14 @@ const props = defineProps<{ data: ITransactionItem[] }>();
     <tbody>
       <tr v-for="item in props.data">
         <td>{{ formatDate(new Date(item.date)) }}</td>
-        <td :class="item.transaction_type_id == 1 ? 'income' : 'expense'">{{ item.value }} ₽</td>
+        <td :class="item.categories?.type_id == 1 ? 'income' : 'expense'">{{ item.value }} ₽</td>
 
         <td class="flex justify-center">
-          <CategoryItem :category_id="item.category_id!" :color="item.color!" :label="item.label" />
+          <CategoryItem
+            :category_id="item.categories?.category_id"
+            :color="item.categories!.color"
+            :label="item.categories!.label"
+          />
         </td>
       </tr>
     </tbody>
