@@ -3,17 +3,17 @@
     <ChartsDonut :type="'expense'" class="w-[30%]" />
     <ChartsDonut :type="'income'" class="w-[30%]" />
 
-    <div class="flex flex-grow flex-col gap-5">
+    <!-- <div class="flex flex-grow flex-col gap-5">
       <ModalAddTransaction />
       <CurrentValue class="flex-grow" />
-    </div>
+    </div> -->
   </div>
 
-  <ChartsLineSummary />
+  <!-- <ChartsLineSummary /> -->
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  layout: "dashboard",
-});
+// definePageMeta({
+//   layout: "dashboard",
+// });
 </script>

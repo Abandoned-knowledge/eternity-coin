@@ -26,10 +26,15 @@ export interface IUser {
 export interface IDonutItem {
   label: string;
   color: string;
-  total: string;
+  value: string;
 }
 
 export interface ILineItem {
   month: string;
   value: string;
+}
+
+export interface SelectDateType {
+  start_date: string;
+  end_date: string;
 }
