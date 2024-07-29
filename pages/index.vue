@@ -9,7 +9,7 @@
     </div> -->
   </div>
 
-  <!-- <ChartsLineSummary /> -->
+  <ChartsLineSummary />
 </template>
 
 <script setup lang="ts">
