@@ -34,6 +34,8 @@ async function submitForm(e: Event) {
       input_value: value,
     },
   });
+
+  location.reload();
 }
 </script>
 
@@ -46,9 +48,9 @@ async function submitForm(e: Event) {
 
       <CategoryItem
         v-if="selectedItem"
-        :category_id="selectedItem!.category_id"
-        :color="selectedItem!.color"
-        :label="selectedItem!.label"
+        :key="selectedItem.category_id"
+        :color="selectedItem.color"
+        :label="selectedItem.label"
       />
 
       <span v-else>not selected</span>
@@ -58,7 +60,7 @@ async function submitForm(e: Event) {
       <CategoryItem
         v-for="category in categories"
         @click="selectCategoryItem(category)"
-        :category_id="category.category_id"
+        :key="category.category_id"
         :color="category.color"
         :label="category.label"
         class="cursor-pointer"

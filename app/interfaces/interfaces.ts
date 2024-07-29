@@ -1,8 +1,8 @@
 export interface ICategoryItem {
-  category_id: number;
+  category_id?: number;
   label: string;
   color: string;
-  type_id: number;
+  type_id?: number;
 }
 
 export interface ITransactionItem {
