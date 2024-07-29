@@ -1,4 +1,4 @@
-function formatDate(date: Date): string {
+function formatDate(date: Date, style?: "yyyy-mm"): string {
   const days: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const months: string[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -7,7 +7,9 @@ function formatDate(date: Date): string {
   const day = date.getDate();
   const month = months[date.getMonth()];
 
-  return `${weekDay}, ${day} ${month} ${year}`;
+  if (style == "yyyy-mm") {
+    return `${year} ${month}`;
+  } else return `${weekDay}, ${day} ${month} ${year}`;
 }
 
 export function changeDataByMonth(currentMonth: number) {
