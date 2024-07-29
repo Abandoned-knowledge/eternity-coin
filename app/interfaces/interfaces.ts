@@ -6,7 +6,7 @@ export interface ICategoryItem {
 }
 
 export interface ITransactionItem {
-  date: Date;
+  date: Date | string;
   value: number;
   categories?: {
     category_id: number;
