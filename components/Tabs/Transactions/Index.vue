@@ -14,9 +14,9 @@ function selectTab(event: Event | HTMLDivElement) {
   currentTab.value = target.textContent;
 }
 
-const { data: allData } = await useFetch<ITransactionItem[]>("/api/transactions/all");
-const { data: incomeData } = await useFetch<ITransactionItem[]>("/api/transactions/income/date/all");
-const { data: expenseData } = await useFetch<ITransactionItem[]>("/api/transactions/expense/date/all");
+const allData = await $fetch<ITransactionItem[]>("/api/transactions");
+const incomeData = await $fetch<ITransactionItem[]>("/api/transactions/income");
+const expenseData = await $fetch<ITransactionItem[]>("/api/transactions/expense");
 
 onMounted(() => selectTab(document.querySelector(".tabs__item") as HTMLDivElement));
 </script>
