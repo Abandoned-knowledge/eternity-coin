@@ -10,6 +10,21 @@ function formatDate(date: Date): string {
   return `${weekDay}, ${day} ${month} ${year}`;
 }
 
+export function changeDataByMonth(currentMonth: number) {
+  let start: string | Date = new Date();
+  let end: string | Date = new Date();
+
+  start.setMonth(currentMonth);
+  start.setDate(1);
+  start = formatDateForDB(start);
+
+  end.setMonth(currentMonth + 1);
+  end.setDate(1);
+  end = formatDateForDB(end);
+
+  return { start, end };
+}
+
 export function formatDateForDB(date: Date): string {
   let dd: string | number = date.getDate();
   let mm: string | number = date.getMonth() + 1;
