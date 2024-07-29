@@ -3,10 +3,10 @@
     @change="$emit('test-name', emitDate($event))"
     class="flex cursor-pointer rounded border border-frame-darked bg-frame px-2 py-1"
   >
-    <option value="day">За День</option>
-    <option value="week">За Неделю</option>
-    <option value="month" selected>За Месяц</option>
-    <option value="year">За Год</option>
+    <option value="day">For a day</option>
+    <option value="week">For a week</option>
+    <option value="month" selected>For a month</option>
+    <option value="year">For an year</option>
   </select>
 </template>
 
