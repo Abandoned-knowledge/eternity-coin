@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
       user_id: user.user_id,
     },
     orderBy: {
-      date: 'desc',
+      date: "desc",
     },
   });
 
