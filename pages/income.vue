@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <TabsIncome />
+  <TabsIncomeExpense type="income" />
 </template>
 
 <style lang="scss" scoped></style>

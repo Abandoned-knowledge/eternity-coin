@@ -1,7 +1,9 @@
 <script setup lang="ts">
+const props = defineProps<{ type: "income" | "expense" }>();
+
 import type { ICategoryItem } from "~/app/interfaces/interfaces";
 
-const { data: categories } = await useFetch<ICategoryItem[]>(`/api/categories/income`);
+const { data: categories } = await useFetch<ICategoryItem[]>(`/api/categories/${props.type}`);
 const warningMessage = ref<string | null>(null);
 
 async function submitForm(event: Event) {
@@ -18,7 +20,7 @@ async function submitForm(event: Event) {
     body: {
       categoryName: categoryName,
       color: color,
-      type: 1,
+      type: props.type == "income" ? 1 : 2,
     },
   });
 

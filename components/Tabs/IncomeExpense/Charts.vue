@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const props = defineProps<{ type: "income" | "expense" }>();
+
 import type { IDonutItem, ILineItem, SelectDateType } from "~/app/interfaces/interfaces";
 
 const { value: date } = ref<SelectDateType>({
@@ -6,33 +8,35 @@ const { value: date } = ref<SelectDateType>({
   end_date: "2025-01-01",
 });
 
-const incomeDonutData = await $fetch<IDonutItem[]>(`/api/transactions/income/date_period/${date.start_date}/${date.end_date}/donut`);
-const incomeLineData = await $fetch<ILineItem[]>(`/api/transactions/income/date_period/${date.start_date}/${date.end_date}/line`);
+const donutData = await $fetch<IDonutItem[]>(
+  `/api/transactions/${props.type}/date_period/${date.start_date}/${date.end_date}/donut`,
+);
+const lineData = await $fetch<ILineItem[]>(
+  `/api/transactions/${props.type}/date_period/${date.start_date}/${date.end_date}/line`,
+);
 
 const chartDonutData = computed(() => {
   return {
-    labels: incomeDonutData!.map((el) => el.label),
+    labels: donutData!.map((el) => el.label),
     datasets: [
       {
-        backgroundColor: incomeDonutData!.map((el) => el.color),
-        data: incomeDonutData!.map((el) => Number(el.value)),
+        backgroundColor: donutData!.map((el) => el.color),
+        data: donutData!.map((el) => Number(el.value)),
         hoverOffset: 15,
       },
     ],
   };
 });
 
-console.log(incomeLineData);
-
 const chartLineData = computed(() => {
   return {
-    labels: incomeLineData!.map((el) => el.month),
+    labels: lineData!.map((el) => el.month),
     datasets: [
       {
         label: "income",
-        backgroundColor: "#28a61c",
-        borderColor: "#28a61c",
-        data: incomeLineData!.map((el) => el.value),
+        backgroundColor: props.type == "income" ? "#28a61c" : "#e35151",
+        borderColor: props.type == "income" ? "#28a61c" : "#e35151",
+        data: lineData!.map((el) => el.value),
         tension: 0.3,
       },
     ],
