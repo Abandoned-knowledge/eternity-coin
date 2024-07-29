@@ -12,7 +12,10 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: ["@prisma/nuxt"],
+  modules: ["@prisma/nuxt", "@pinia/nuxt"],
+  pinia: {
+    storesDirs: ["./entities/**"]
+  },
 
   prisma: {
     runMigration: false,
