@@ -11,15 +11,15 @@ const { value: date } = ref<SelectDateType>({
   end_date: "2025-01-01",
 });
 
-const data = await $fetch<IDonutItem[]>(
-  `/api/transactions/${type.value}/date_period/${date.start_date}/${date.end_date}/donut`
-);
-let rawData = ref<IDonutItem[]>(data);
-
 function emitDate(date_period: SelectDateType) {
   date.end_date = date_period.end_date;
   date.start_date = date_period.start_date;
 }
+
+const data = await $fetch<IDonutItem[]>(
+  `/api/transactions/${type.value}/date_period/${date.start_date}/${date.end_date}/donut`
+);
+let rawData = ref<IDonutItem[]>(data);
 
 const chartData = computed(() => {
   return {
