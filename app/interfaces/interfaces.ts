@@ -1,26 +1,19 @@
-import type { Component } from "vue";
-
-export interface ITab {
-  tabTitle: string;
-  tabComponent: Component;
-}
-
 export interface ICategoryItem {
   category_id: number;
   label: string;
   color: string;
-  transaction_type_id?: number;
+  type_id: number;
 }
 
-export interface IDonutItem {
-  label: string;
-  total_value: string;
-  color: string;
-}
-
-export interface ILineItem {
-  month_name: string;
-  total_value: string;
+export interface ITransactionItem {
+  date: Date;
+  value: number;
+  categories: {
+    category_id: number;
+    color: string;
+    label: string;
+    type_id: number;
+  };
 }
 
 export interface IUser {
@@ -30,11 +23,13 @@ export interface IUser {
   name: string;
 }
 
-export interface ITransactionItem {
+export interface IDonutItem {
   label: string;
-  value: number;
-  date: Date;
-  transaction_type_id?: number;
-  color?: string;
-  category_id?: number;
+  color: string;
+  total: string;
+}
+
+export interface ILineItem {
+  month: string;
+  value: string;
 }
