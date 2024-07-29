@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TransactionItem from "./TransactionItem.vue";
 import type { ITransactionItem } from "~/app/interfaces/interfaces";
-const { data } = await useFetch<ITransactionItem[]>("/api/transactions/all");
+const { data } = await useFetch<ITransactionItem[]>("/api/transactions");
 </script>
 
 <template>
@@ -12,8 +12,8 @@ const { data } = await useFetch<ITransactionItem[]>("/api/transactions/all");
       <TransactionItem
         v-for="item in data"
         :date="new Date(item.date)"
-        :is-income="item.transaction_type_id == 1"
-        :label="item.label"
+        :is-income="item.categories?.type_id == 1"
+        :label="item.categories?.color"
         :value="item.value"
       />
     </ul>

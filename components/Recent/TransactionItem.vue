@@ -13,7 +13,7 @@ const props = defineProps<inter>();
   <li>
     <div class="transaction" :class="{ transaction_income: isIncome }">
       <div class="flex flex-col gap-2">
-        <p class="transaction__category body-text body-text_lg bold">{{ props.label }}</p>
+        <p class="transaction__category body-text body-text_lg bold">{{ props.categories?.label }}</p>
         <p class="transaction__date body-text body-text_sm text-grey">{{ formatDate(props.date) }}</p>
       </div>
       <p class="transaction__value body-text body-text_lg bold">{{ props.value }} ₽</p>

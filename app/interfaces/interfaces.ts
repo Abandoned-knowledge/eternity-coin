@@ -8,7 +8,7 @@ export interface ICategoryItem {
 export interface ITransactionItem {
   date: Date;
   value: number;
-  categories: {
+  categories?: {
     category_id: number;
     color: string;
     label: string;
