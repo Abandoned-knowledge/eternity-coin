@@ -67,10 +67,10 @@ async function submitForm(e: Event) {
       />
     </div>
 
-    <input type="text" :value="selectedItem?.category_id" name="input_category_id" hidden />
-    <input type="text" :value="props.type" name="input_type" hidden />
+    <Input type="text" :value="selectedItem?.category_id" name="input_category_id" class="hidden" />
+    <Input type="text" :value="props.type" name="input_type" class="hidden" />
 
-    <Input outline-color="accent" placeholder="value">value</Input>
+    <Input type="text" placeholder="value" outline-color="accent" />
 
     <p class="body-text body-text_lg text-center capitalize text-red" v-show="warningMessage">
       {{ warningMessage }}
