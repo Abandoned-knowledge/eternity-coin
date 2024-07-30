@@ -1,9 +1,13 @@
 <script setup lang="ts">
 const props = defineProps<{
-  placeholder: string;
-  outlineColor: string;
-  required?: boolean
+  type: string;
+  label?: string;
+  placeholder?: string;
+  outlineColor?: string;
+  required?: boolean;
+  value?: string | number;
 }>();
+let placeholder = !props.placeholder ? "" : props.placeholder;
 
 function convertPlaceholder(ph: string): string {
   const words = ph.split(" ");
@@ -14,14 +18,15 @@ function convertPlaceholder(ph: string): string {
 
 <template>
   <div class="flex flex-col gap-1">
-    <label :for="convertPlaceholder(props.placeholder)" class="body-text body-text_sm ml-1 text-grey">
-      <slot></slot>
+    <label :for="convertPlaceholder(placeholder)" class="body-text body-text_sm ml-1 text-grey">
+      {{ label }}
     </label>
     <input
-      type="text"
+      :value="props.value"
+      :type="props.type"
       :required="props.required"
-      :name="convertPlaceholder(props.placeholder)"
-      :id="convertPlaceholder(props.placeholder)"
+      :name="convertPlaceholder(placeholder)"
+      :id="convertPlaceholder(placeholder)"
       class="body-text rounded border border-main p-1 outline-none outline-2 outline-offset-0"
       :class="`focus:outline-${props.outlineColor}`"
       :placeholder="props.placeholder"
