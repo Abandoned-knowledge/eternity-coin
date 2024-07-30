@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Form from "./Form.vue";
+import Form from "~/components/Forms/AddTransaction.vue";
 const modal = ref<HTMLDialogElement | null>(null);
 import type { ICategoryItem } from "~/app/interfaces/interfaces";
 
